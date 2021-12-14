@@ -10,7 +10,6 @@ WHERE id in (
                       WHERE to_user_id = 4
                         AND from_user_id in (SELECT IF(from_user_id = 4, to_user_id, from_user_id) AS friend_id
                                              FROM friendship_requests
-                                             WHERE (from_user_id = 4 or to_user_id = 4)
-                                               and status = 1)
+                                             WHERE (from_user_id = 4 or to_user_id = 4) and status = 1)
                       GROUP BY from_user_id
                   ) messages) max_messages_count_2);
