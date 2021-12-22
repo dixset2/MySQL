@@ -33,7 +33,7 @@ FROM users
     GROUP BY user_id
 ) posts_count ON posts_count.user_id = users.id
          LEFT JOIN (
-    SELECT from_user_id,to_user_id,status, COUNT(*) AS friends_count
+ SELECT from_user_id,to_user_id,status, COUNT(*) AS friends_count
     FROM friendship_requests
 ) friends_count ON (friends_count.from_user_id = users.id or friends_count.to_user_id = users.id) and friends_count.status = 1
 ORDER BY total ASC LIMIT 10

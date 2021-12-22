@@ -7,7 +7,7 @@ WHERE (likes.media_id in (
         SELECT *
         FROM ( /*Как не дублировать эту часть запроса? */
                  SELECT users.id
-                 FROM users
+               FROM users
                           LEFT JOIN profiles p on users.id = p.user_id
                  ORDER BY p.birthday DESC
                  LIMIT 10) as t)))
